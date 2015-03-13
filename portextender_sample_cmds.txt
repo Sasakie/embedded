@@ -1,0 +1,4 @@
+i2cdetect -y 1
+i2cset -y 1 0x20 0x00 0x00 #set port A (GPA0-7 pins) as outputs
+i2cset -y 1 0x20 0x14 0x01 #set GPA0 pin to output high (LED ON)
+i2cset -y 1 0x20 0x14 0x00 #set GPA0 pin to output low  (LED OFF)
