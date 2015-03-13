@@ -212,11 +212,9 @@ void chip_select(int chip)
 double v_to_p (int v)
 {
     double power = 0;
-
     double adc_voltage = (5.0/1024.0 * (double)v);
-
     double measured_current = abs(2.5 - adc_voltage) * 66000;     
-
+    
     power = measured_current * 120.0;
 
     return power;
@@ -383,9 +381,11 @@ int main(void)
 	i2c8Bit mcp23017(dev_addrs,string("/dev/i2c-1"), NUM_MCP23017);
     mcp23017.writeAllReg(0b00,0b00000000);	
   
-	url = "http://pb-elite.website/api/testResponse/1/";
-	posturl = "http://pb-elite.website/api/sendReading/";
+	//url = "http://pb-elite.website/api/testResponse/1/";
+	//posturl = "http://pb-elite.website/api/sendReading/";
 
+	url = "http://192.168.43.253:8000/api/testResponse/1/";
+	posturl = "http://192.168.43.253:8000/api/sendReading/";
     wiringPiSetup();
 
     for (int pin = 4; pin < 7; ++pin)
